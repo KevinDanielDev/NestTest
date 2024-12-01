@@ -28,4 +28,12 @@ export class AuthController {
       user: user,
     };
   }
+
+  @Get('health')
+  healthCheck() {
+    return {
+      code: 200,
+      message: 'API is running',
+    };
+  }
 }
