@@ -1,4 +1,4 @@
 export interface JwtPayload {
-  email: string;
+  id: string;
   // TODO: Se pueden agregar más campos según sea necesario
 }

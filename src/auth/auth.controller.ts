@@ -1,6 +1,7 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
@@ -14,5 +15,15 @@ export class AuthController {
   @Post('login')
   loginUser(@Body() createUserDto: CreateUserDto) {
     return this.authService.login(createUserDto);
+  }
+
+  // Ruta privada para probar el JWT
+  @Get('private')
+  @UseGuards(AuthGuard())
+  testingPrivateRoute() {
+    return {
+      code: 200,
+      message: 'User is authenticated',
+    };
   }
 }
