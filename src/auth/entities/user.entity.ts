@@ -26,9 +26,7 @@ export class User {
   })
   isActive: boolean;
 
-  @Column('text', {
-    array: true,
-  })
+  @Column({ type: 'simple-json' })
   roles: string[];
 
   @BeforeInsert()
