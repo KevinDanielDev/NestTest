@@ -5,20 +5,21 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('text')
+  @Column('text', {
+    unique: true,
+  })
   email: string;
 
   @Column('text')
   password: string;
 
-  @Column('bool', {
-    unique: true,
+  @Column('boolean', {
+    default: true,
   })
   isActive: boolean;
 
   @Column('text', {
     array: true,
-    default: ['cliente'],
   })
   roles: string[];
 }
