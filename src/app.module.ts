@@ -14,6 +14,7 @@ import * as Joi from 'joi';
           .default('development')
           .required(),
         PORT: Joi.number().port().default(3001).required(),
+        JWT_SECRET: Joi.string().required(),
       }),
       validationOptions: {
         allowUnknown: true,
