@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 import * as Joi from 'joi';
 
 @Module({
@@ -27,6 +28,7 @@ import * as Joi from 'joi';
       retryAttempts: 3,
       retryDelay: 5000,
     }),
+    AuthModule,
   ],
   controllers: [],
   providers: [],
