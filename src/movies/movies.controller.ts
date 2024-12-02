@@ -5,8 +5,14 @@ import { MoviesService } from './movies.service';
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
+  @Get('sync')
+  async syncMovies() {
+    await this.moviesService.syncMovies();
+    return 'Movies synced';
+  }
+
   @Get()
-  syncMovies() {
-    return this.moviesService.syncMovies();
+  getAllMovies() {
+    return this.moviesService.getAllMovies();
   }
 }

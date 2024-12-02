@@ -12,6 +12,8 @@ export class MoviesService {
     @InjectRepository(Movie)
     private readonly movieRepository: Repository<Movie>,
   ) {}
+
+  // Método para sincronizar las películas de la API con la base de datos
   async syncMovies() {
     try {
       const allMovies = await this.providerService.getMovies();
@@ -40,9 +42,15 @@ export class MoviesService {
         };
       });
       await this.movieRepository.save(tranformedMovies);
-      return 'Movies synced successfully';
     } catch (error) {
       if (error) throw new InternalServerErrorException('Error syncing movies');
     }
+  }
+
+  async getAllMovies() {
+    const allMovies = await this.movieRepository.find();
+    if (allMovies.length === 0)
+      throw new InternalServerErrorException('No movies found in database');
+    return allMovies;
   }
 }

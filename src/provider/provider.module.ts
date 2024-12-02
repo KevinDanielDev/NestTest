@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ProviderService } from './provider.service';
-import { ProviderController } from './provider.controller';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
@@ -20,7 +19,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       }),
     }),
   ],
-  controllers: [ProviderController],
+  controllers: [],
   providers: [ProviderService],
   exports: [ProviderModule, HttpModule],
 })
