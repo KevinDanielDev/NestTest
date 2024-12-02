@@ -22,5 +22,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
   ],
   controllers: [ProviderController],
   providers: [ProviderService],
+  exports: [ProviderModule, HttpModule],
 })
 export class ProviderModule {}
