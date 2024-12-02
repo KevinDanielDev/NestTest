@@ -15,6 +15,10 @@ async function bootstrap() {
       transform: true,
     }),
   );
+  app.enableCors({
+    origin: '*',
+    methods: 'GET,POST',
+  });
   await app.listen(PORT);
   logger.log(`Servidor corriendo en localhost:${PORT} `);
   logger.log(`Ambiente: ${process.env.NODE_ENV}`);
