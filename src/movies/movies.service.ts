@@ -53,4 +53,10 @@ export class MoviesService {
       throw new InternalServerErrorException('No movies found in database');
     return allMovies;
   }
+
+  async getMovieById(id: number) {
+    const movie = await this.movieRepository.findOneBy({ id: id });
+    if (!movie) throw new InternalServerErrorException('Movie not found');
+    return movie;
+  }
 }

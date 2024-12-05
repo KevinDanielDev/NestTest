@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { MoviesService } from './movies.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('movies')
 export class MoviesController {
@@ -14,5 +15,11 @@ export class MoviesController {
   @Get()
   getAllMovies() {
     return this.moviesService.getAllMovies();
+  }
+
+  @Get(':id')
+  @UseGuards(AuthGuard())
+  getMovieById(@Param('id') id: number) {
+    return this.moviesService.getMovieById(id);
   }
 }
